@@ -14,4 +14,11 @@ public class Penguin extends Aquatic{
     public void swim (){
         System.out.println(" This pinguin is swimming. ");
     }
+
+    @Override
+    public void eatMeat(Food meat) {
+        if (meat == Food.MEAT) {
+            System.out.println(name + " mange de la viande.");
+        }
+    }
 }
