@@ -6,12 +6,7 @@ public class Animal {
     protected int age;
     protected boolean isMammal;
 
-    public Animal() {
-        this.family = "Inconnu";
-        this.name = "Inconnu";
-        this.age = 0;
-        this.isMammal = false;
-    }
+    public Animal() {}
 
     public Animal(String family, String name, int age, boolean isMammal) {
         this.family = family;
