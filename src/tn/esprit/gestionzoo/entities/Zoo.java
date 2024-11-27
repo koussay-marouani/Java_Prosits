@@ -4,11 +4,12 @@ public class Zoo {
     protected Animal[] animals;
     Aquatic [] aquaticAnimals;
     protected String name, city;
-    protected final static int nbrCages = 25;
+    public static final int nbrCages = 3;
     protected int animalCount;
 
     public Zoo() {
         aquaticAnimals = new Aquatic[10];
+        this.animals = new Animal[nbrCages];
     }
 
     public Zoo(String name, String city) {
@@ -71,6 +72,26 @@ public class Zoo {
 
     public String getName() {
         return name;
+    }
+
+    boolean isZooFull() {
+        return animalCount == nbrCages;
+    }
+
+
+    public void addAnimal(Animal animal) throws ZooFullException,InvalidAgeException {
+
+        if (isZooFull()) {
+            throw new ZooFullException("Zoo Full");
+        }
+
+        if (animal.age < 0){
+            throw new InvalidAgeException("Invalid Age");
+        }
+
+        animals[animalCount] = animal;
+        animalCount++;
+
     }
 
     public void setName(String name){

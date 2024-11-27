@@ -20,5 +20,20 @@ public class ZooManagement {
         myZoo.maxPenguinSwimmingDepth();
         myZoo.displayNumberOfAquaticsByType();
 
+        try {
+
+            myZoo.addAnimal(animal);
+            myZoo.addAnimal(animal);
+            myZoo.addAnimal(animal);
+            myZoo.addAnimal(animal);
+
+        } catch (ZooFullException e) {
+            System.out.println(e.getMessage());
+        } catch (InvalidAgeException i) {
+            System.out.println(i.getMessage());
+        }finally {
+            System.out.println(Zoo.nbrCages);
+        }
+
     }
 }
