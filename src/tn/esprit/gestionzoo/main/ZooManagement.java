@@ -1,59 +1,21 @@
 package tn.esprit.gestionzoo.main;
 
-import tn.esprit.gestionzoo.entities.Animal;
-import tn.esprit.gestionzoo.entities.Zoo;
+import tn.esprit.gestionzoo.entities.*;
 
-import java.util.Scanner;
 
 public class ZooManagement {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
 
-        System.out.println("Veuillez saisir le nom du zoo : ");
-        String zooName = input.nextLine();
-        System.out.println("Veuillez saisir la ville du zoo : ");
-        String zooCity = input.nextLine();
+        Animal animal = new Animal ("Lions" , "Lion" , 5 , true);
+        Aquatic aquaticAnimal = new Aquatic("Fish" , "Sardine" , 1 , true , "water");
+        Terrestrial terrestrialAnimal = new Terrestrial("Mammal" , "Ours" , 12 , true , 4);
+        Penguin penguin = new Penguin("Bird", "Pingu", 3, false, "Antarctica", 30.0f);
+        Dolphin dolphin = new Dolphin("Mammal", "Flipper", 5, true, "Ocean", 25.0f);
 
-        Zoo myZoo = new Zoo(zooName, zooCity);
+        aquaticAnimal.swim();
+        dolphin.swim();
+        penguin.swim();
 
-        while (true) {
-            System.out.println("Veuillez saisir le nom de l'animal (ou tapez 'exit' pour terminer) : ");
-            String animalName = input.nextLine();
-            if (animalName.equalsIgnoreCase("exit")) {
-                break;
-            }
-            System.out.println("Veuillez saisir la famille de l'animal : ");
-            String animalFamily = input.nextLine();
-            System.out.println("Veuillez saisir l'âge de l'animal : ");
-            int animalAge = input.nextInt();
-            input.nextLine();
-            System.out.println("Est-ce que cet animal est un mammifère ? (true/false) : ");
-            boolean isMammal = input.nextBoolean();
-            input.nextLine();
 
-            Animal animal = new Animal(animalFamily, animalName, animalAge, isMammal);
-
-            boolean isAdded = myZoo.addAnimal(animal);
-
-            if (isAdded) {
-                System.out.println("tn.esprit.gestionzoo.entities.Animal ajouté : " + animal.name);
-            } else {
-                System.out.println("Le zoo est plein, impossible d'ajouter l'animal.");
-                break;
-            }
-        }
-
-        myZoo.displayZoo();
-
-        System.out.println("Veuillez saisir le nom de l'animal à rechercher : ");
-        String searchName = input.nextLine();
-        Animal searchAnimal = new Animal("", searchName, 0, false);
-        int index = myZoo.searchAnimal(searchAnimal);
-
-        if (index != -1) {
-            System.out.println("tn.esprit.gestionzoo.entities.Animal trouvé à l'indice : " + index);
-        } else {
-            System.out.println("tn.esprit.gestionzoo.entities.Animal non trouvé.");
-        }
     }
 }
