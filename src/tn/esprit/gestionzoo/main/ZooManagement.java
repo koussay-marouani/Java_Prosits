@@ -1,3 +1,8 @@
+package tn.esprit.gestionzoo.main;
+
+import tn.esprit.gestionzoo.entities.Animal;
+import tn.esprit.gestionzoo.entities.Zoo;
+
 import java.util.Scanner;
 
 public class ZooManagement {
@@ -8,9 +13,6 @@ public class ZooManagement {
         String zooName = input.nextLine();
         System.out.println("Veuillez saisir la ville du zoo : ");
         String zooCity = input.nextLine();
-        System.out.println("Veuillez saisir le nombre des cages : ");
-        int nbrCages = input.nextInt();
-        input.nextLine();
 
         Zoo myZoo = new Zoo(zooName, zooCity);
 
@@ -34,7 +36,7 @@ public class ZooManagement {
             boolean isAdded = myZoo.addAnimal(animal);
 
             if (isAdded) {
-                System.out.println("Animal ajouté : " + animal.name);
+                System.out.println("tn.esprit.gestionzoo.entities.Animal ajouté : " + animal.name);
             } else {
                 System.out.println("Le zoo est plein, impossible d'ajouter l'animal.");
                 break;
@@ -49,9 +51,9 @@ public class ZooManagement {
         int index = myZoo.searchAnimal(searchAnimal);
 
         if (index != -1) {
-            System.out.println("Animal trouvé à l'indice : " + index);
+            System.out.println("tn.esprit.gestionzoo.entities.Animal trouvé à l'indice : " + index);
         } else {
-            System.out.println("Animal non trouvé.");
+            System.out.println("tn.esprit.gestionzoo.entities.Animal non trouvé.");
         }
     }
 }

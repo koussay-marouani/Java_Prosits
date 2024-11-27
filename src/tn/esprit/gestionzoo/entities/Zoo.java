@@ -1,18 +1,34 @@
+package tn.esprit.gestionzoo.entities;
+
 public class Zoo {
-    Animal[] animals;
-    String name, city;
-    final static int nbrCages = 25;
-    int animalCount;
+    protected Animal[] animals;
+    protected String name, city;
+    protected final static int nbrCages = 25;
+    protected int animalCount;
 
     public Zoo(String name, String city) {
-        this.name = name;
+        setName(name);
         this.city = city;
         this.animals = new Animal[nbrCages];
         this.animalCount = 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name){
+        if (name == null){
+            System.out.println("Le nom du zoo est vide");
+            this.name = "tn.esprit.gestionzoo.entities.Zoo inconnu";
+        }
+        else {
+            this.name = name;
+        }
+    }
+
     public void displayZoo() {
-        System.out.println("Zoo name: " + name);
+        System.out.println("tn.esprit.gestionzoo.entities.Zoo name: " + name);
         System.out.println("City: " + city);
         System.out.println("Number of cages: " + nbrCages);
         for (int i = 0; i < animalCount; i++) {
@@ -24,16 +40,20 @@ public class Zoo {
         }
     }
 
-    boolean addAnimal(Animal animal) {
-        if (animalCount < nbrCages) {
+    public boolean addAnimal(Animal animal) {
+        if (isZooFull()) {
+            System.out.println("tn.esprit.gestionzoo.entities.Zoo plein impossible d'ajouter d'animal");
+            return false;
+        }
+        else {
             animals[animalCount] = animal;
             animalCount++;
             return true;
         }
-        return false;
+
     }
 
-    int searchAnimal(Animal animal) {
+    public int searchAnimal(Animal animal) {
         for (int i = 0; i < animalCount; i++) {
             if (animals[i].name.equals(animal.name)) {
                 return i;
@@ -47,12 +67,12 @@ public class Zoo {
             if (animals[i].name.equals(animal.name)) {
                 animals[i] = null;
                 animalCount--;
-                System.out.println("Animal supprimé avec succés");
+                System.out.println("tn.esprit.gestionzoo.entities.Animal supprimé avec succés");
                 return true;
 
             }
         }
-        System.out.println("Animal n'existe pas");
+        System.out.println("tn.esprit.gestionzoo.entities.Animal n'existe pas");
         return false;
     }
 
